@@ -15,6 +15,8 @@ https://github.com/pin-cong/data/blob/master/pink.sql
 * Opera >= 44
 * Safari >= 11
 
+已使用 Chrome 71 测试通过
+
 ## 许可证
 
 根据 MIT 许可证开源。
