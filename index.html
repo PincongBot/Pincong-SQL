@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Pincong SQL</title>
+	<link rel="stylesheet" href="./lib/bootstrap-material-design.min.css">
+	<link rel="stylesheet" href="./lib/codemirror/lib/codemirror.css">
+	<script src="./lib/codemirror/lib/codemirror.js"></script>
+	<script src="./lib/codemirror/mode/sql/sql.js"></script>
+</head>
+
+<body>
+	<div class="container" id="app">
+
+		<div class="card" style="margin-top: 40px;">
+			<h5 class="card-header">Pincong SQL</h5>
+
+			<div id="loading">
+				<div class="progress" style="height: 20px;">
+					<div class="progress-bar" id="progress-bar" role="progressbar" style="width: 0%; transition: none;"></div>
+				</div>
+
+				<div class="card-body">
+					加载中&nbsp;
+					<span id="resource-loaded">0</span>/<span id="resource-number">25</span>
+				</div>
+			</div>
+
+			<div id="loaded" style="display: none">
+
+				<div class="card-body">
+					<textarea id="code" style="width: 100%;">SELECT * FROM aws_answer</textarea>
+					<button type="button" class="btn btn-outline-dark" style="margin-top: 1em;" id="execute-btn">执行</button>
+				</div>
+
+				<div class="card-footer" style="display: none" id="result">
+					<div id="table-container"></div>
+					<button type="button" class="btn btn-outline-dark" id="export-btn">导出json</button>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<script src="sql-wasm.js"></script>
+	<script src="index.js"></script>
+	<script src="./lib/filesaver.min.js"></script>
+</body>
+
+</html>
