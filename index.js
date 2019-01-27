@@ -134,7 +134,6 @@
             db.run(s);
         });
 
-        console.log(index);
         resourceLoadedAdd();
     });
 
