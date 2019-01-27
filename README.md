@@ -7,6 +7,14 @@
 
 https://github.com/pin-cong/data/blob/master/pink.sql
 
+## 浏览器支持
+
+* Chrome >= 57
+* Firefox >= 53
+* Edge >= 16
+* Opera >= 44
+* Safari >= 11
+
 ## 许可证
 
 根据 MIT 许可证开源。
