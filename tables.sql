@@ -56,6 +56,17 @@ CREATE TABLE "aws_article_comments" (
   "anonymous" tinyint(1) DEFAULT '0'
 );
 
+CREATE TABLE "aws_article_log" (
+  `id` int(11) PRIMARY KEY NOT NULL,
+  `item_id` int(11) DEFAULT '0',
+  `child_id` int(11) DEFAULT '0',
+  `uid` int(11) DEFAULT '0',
+  `anonymous` int(11) DEFAULT '0',
+  `type` varchar(64) DEFAULT NULL,
+  `note` varchar(128) DEFAULT NULL,
+  `time` int(10) DEFAULT '0'
+);
+
 CREATE TABLE "aws_category" (
   "id" int(11) PRIMARY KEY NOT NULL,
   "title" varchar(128) DEFAULT NULL,
@@ -171,6 +182,17 @@ CREATE TABLE "aws_question_comments" (
   "message" text,
   "time" int(10) DEFAULT NULL,
   "anonymous" tinyint(1) DEFAULT '0'
+);
+
+CREATE TABLE `aws_question_log` (
+  `id` int(11) PRIMARY KEY NOT NULL,
+  `item_id` int(11) DEFAULT '0',
+  `child_id` int(11) DEFAULT '0',
+  `uid` int(11) DEFAULT '0',
+  `anonymous` int(11) DEFAULT '0',
+  `type` varchar(64) DEFAULT NULL,
+  `note` varchar(128) DEFAULT NULL,
+  `time` int(10) DEFAULT '0'
 );
 
 CREATE TABLE "aws_redirect" (
