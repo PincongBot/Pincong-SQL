@@ -27,7 +27,7 @@ SELECT id, title, views FROM aws_article ORDER BY views DESC;
 
 ![](img/example0.png)
 
-#### "品葱备份" 话题下的全部文章
+#### 查询 "品葱备份" 话题下的全部文章
 
 ```sql
 SELECT id, title, views, comments, votes FROM aws_article
@@ -40,7 +40,7 @@ ORDER BY id DESC;
 
 ![](img/example1.png)
 
-#### @一只鹿兒 发表的全部文章
+#### 查询 @一只鹿兒 发表的全部文章
 
 ```sql
 SELECT id, title, message AS content FROM aws_article
