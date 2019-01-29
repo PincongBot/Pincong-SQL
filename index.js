@@ -92,8 +92,25 @@
         });
     };
 
-    // @ts-ignore
-    const SQLJS = await initSqlJs();
+    const InitSQLJS = async () => {
+        try {
+            // @ts-ignore
+            return await initSqlJs();
+        } catch (e) {
+            await new Promise((resolve) => {
+                const script = document.createElement("script");
+                script.src = "./lib/sql-memory-growth.js";
+                script.onload = () =>{
+                    resolve();
+                };
+                document.body.appendChild(script);
+            });
+            // @ts-ignore
+            return SQL
+        }
+    };
+
+    const SQLJS = await InitSQLJS();
     const db = new SQLJS.Database();
 
     let resourceLoaded = 0;
