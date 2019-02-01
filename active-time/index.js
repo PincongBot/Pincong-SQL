@@ -55,25 +55,25 @@
         )[0].values[0][0];
 
         const results = db.exec(`
-              SELECT getTime(add_time) FROM aws_article
-              WHERE uid == ${uid}
-          UNION ALL
-              SELECT getTime(add_time) FROM aws_article_comments
-              WHERE uid == ${uid}
-          UNION ALL
-              SELECT getTime(add_time) FROM aws_question
-              WHERE published_uid == ${uid}
-          UNION ALL
-              SELECT getTime(time) FROM aws_question_comments
-              WHERE uid == ${uid}
-          UNION ALL
-              SELECT getTime(add_time) FROM aws_answer
-              WHERE uid == ${uid}
-          UNION ALL
-              SELECT getTime(time) FROM aws_answer_comments
-              WHERE uid == ${uid}
-          ORDER BY getTime(add_time);
-          `);
+                SELECT getTime(add_time) FROM aws_article
+                WHERE uid == ${uid}
+            UNION ALL
+                SELECT getTime(add_time) FROM aws_article_comments
+                WHERE uid == ${uid}
+            UNION ALL
+                SELECT getTime(add_time) FROM aws_question
+                WHERE published_uid == ${uid}
+            UNION ALL
+                SELECT getTime(time) FROM aws_question_comments
+                WHERE uid == ${uid}
+            UNION ALL
+                SELECT getTime(add_time) FROM aws_answer
+                WHERE uid == ${uid}
+            UNION ALL
+                SELECT getTime(time) FROM aws_answer_comments
+                WHERE uid == ${uid}
+            ORDER BY getTime(add_time);
+            `);
 
         /** @type {string[][]} */
         const data = results[0].values;
@@ -84,11 +84,12 @@
     };
 
     let results;
+    let userName = "";
     const resultEl = document.getElementById("result");
     const input = document.getElementById("username-input");
     const resultContainer = document.getElementById("result-container");
     const execute = () => {
-        const userName = input.value.trim();
+        userName = input.value.trim();
         results = getData(userName);
 
         const data = results
@@ -143,10 +144,32 @@
         saveAs(blob, "results.json");
     };
 
+    const exportSVG = async () => {
+
+        /** @type {SVGSVGElement} */
+        const svgElement = resultContainer.querySelector("svg").cloneNode(true);
+        svgElement.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+
+        const css = await getText("../lib/metrics-graphics/metricsgraphics.css");
+        const style = document.createElement("style");
+        style.innerHTML = css;
+
+        svgElement.prepend(style);
+        svgElement.style.marginLeft = svgElement.style.marginTop = "10px";
+
+        const svg = svgElement.outerHTML;
+        const blob = new Blob([svg], { type: "image/svg+xml;charset=utf-8" });
+        // @ts-ignore
+        saveAs(blob, userName + ".svg");
+
+    };
+
     const executeBtn = document.getElementById("execute-btn");
     executeBtn.onclick = () => execute();
-    const exportBtn = document.getElementById("export-btn");
-    exportBtn.onclick = () => exportJson();
+    const exportJsonBtn = document.getElementById("export-json-btn");
+    exportJsonBtn.onclick = () => exportJson();
+    const exportSvgBtn = document.getElementById("export-svg-btn");
+    exportSvgBtn.onclick = () => exportSVG();
 
     let resourceLoaded = 0;
     const resourceNumberEl = document.getElementById("resource-number");
