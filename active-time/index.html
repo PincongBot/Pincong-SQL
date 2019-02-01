@@ -8,7 +8,7 @@
     <title>新品葱活跃用户时间分析</title>
     <link rel="stylesheet" href="../lib/bootstrap-material-design.min.css">
     <link rel="stylesheet" href="../lib/metrics-graphics/metricsgraphics.css">
-    <link rel="preload" href="../sql-wasm.wasm" as="fetch" crossorigin="anonymous">
+    <link rel="preload" href="./sql-wasm.wasm" as="fetch" crossorigin="anonymous">
     <link rel="preload" href="https://cdn.jsdelivr.net/gh/pin-cong/data@master/pink.sql" as="fetch" crossorigin="anonymous">
     <link rel="preload" href="../tables.sql" as="fetch" crossorigin="anonymous">
     <style>
@@ -40,9 +40,9 @@
                 <div class="card-body">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">@</span>
+                            <span class="input-group-text">用户名：</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="用户名" id="username-input">
+                        <input type="text" class="form-control" id="username-input">
                         <div class="input-group-append">
                             <button class="btn btn-outline-dark" type="button" id="execute-btn">显示</button>
                         </div>
