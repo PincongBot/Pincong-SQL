@@ -191,7 +191,7 @@
     };
 
     const fullSQL = await getText(
-        "https://cdn.jsdelivr.net/gh/pin-cong/data@master/pink.sql"
+        "https://raw.githubusercontent.com/pin-cong/data/master/pink.sql"
     );
     resourceLoadedAdd();
 
