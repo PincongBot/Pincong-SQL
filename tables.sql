@@ -45,14 +45,14 @@ CREATE TABLE "aws_article" (
     "thanks_count" int(10) DEFAULT '0'
 );
 
-CREATE TABLE "aws_article_comments" (
+CREATE TABLE "aws_article_comment" (
   "id" int(10) PRIMARY KEY NOT NULL,
   "uid" int(10) NOT NULL,
   "article_id" int(10) NOT NULL,
   "message" text NOT NULL,
   "add_time" int(10) NOT NULL,
   "at_uid" int(10) DEFAULT NULL,
-  "votes" int(10) DEFAULT '0',
+  "agree_count" int(10) DEFAULT '0',
   "anonymous" tinyint(1) DEFAULT '0'
 );
 
@@ -70,9 +70,8 @@ CREATE TABLE "aws_article_log" (
 CREATE TABLE "aws_category" (
   "id" int(11) PRIMARY KEY NOT NULL,
   "title" varchar(128) DEFAULT NULL,
-  "type" varchar(16) DEFAULT NULL,
-  "icon" varchar(240) DEFAULT NULL,
-  "parent_id" int(11) DEFAULT '0',
+  "description" varchar(240) DEFAULT NULL,
+  "group_id" int(11) DEFAULT '0',
   "sort" smallint(6) DEFAULT '0',
   "url_token" varchar(32) DEFAULT NULL
 );
@@ -80,12 +79,7 @@ CREATE TABLE "aws_category" (
 CREATE TABLE "aws_feature" (
   "id" int(11) PRIMARY KEY NOT NULL,
   "title" varchar(200) DEFAULT NULL,
-  "description" varchar(240) DEFAULT NULL,
-  "icon" varchar(240) DEFAULT NULL,
-  "topic_count" int(11) NOT NULL DEFAULT '0',
-  "css" text,
-  "url_token" varchar(32) DEFAULT NULL,
-  "seo_title" varchar(240) DEFAULT NULL,
+  "link" text,
   "enabled" tinyint(1) NOT NULL DEFAULT '0',
   "sort" smallint(6) DEFAULT '0'
 );
